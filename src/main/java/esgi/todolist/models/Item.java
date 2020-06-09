@@ -1,5 +1,8 @@
 package esgi.todolist.models;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.validator.routines.EmailValidator;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -48,6 +51,13 @@ public class Item {
     public void setDateCreation(LocalDateTime dateCreation) {
         this.dateCreation = dateCreation;
     }
+
+    public boolean isValid(){
+        return StringUtils.isNotBlank(this.name)
+                && StringUtils.isNotBlank(this.content)
+                && StringUtils.length(this.content) <= 1000
+                && this.dateCreation != null;
+     }
 
     @Override
     public String toString() {
