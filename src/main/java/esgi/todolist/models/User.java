@@ -1,7 +1,9 @@
 package esgi.todolist.models;
 
+import esgi.todolist.components.HelperComponent;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 
@@ -11,6 +13,9 @@ public class User {
     private String name;
     private String firstName;
     private LocalDate birthDate;
+
+    @Autowired
+    private HelperComponent helperComponent;
 
 
     public User(String email, String name, String firstName, LocalDate birthDate){
@@ -61,6 +66,14 @@ public class User {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public HelperComponent getHelperComponent() {
+        return helperComponent;
+    }
+
+    public void setHelperComponent(HelperComponent helperComponent) {
+        this.helperComponent = helperComponent;
     }
 
     @Override
