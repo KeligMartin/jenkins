@@ -24,6 +24,14 @@ public class Item {
         this.id++;
     }
 
+    public Item(String name, String content, LocalDateTime ldt){
+        this.name = name;
+        this.content = content;
+        this.dateCreation = ldt;
+
+        this.id++;
+    }
+
     public static int getId() {
         return id;
     }
