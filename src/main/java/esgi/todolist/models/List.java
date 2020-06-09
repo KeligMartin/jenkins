@@ -1,6 +1,7 @@
 package esgi.todolist.models;
 
 import esgi.todolist.models.exceptions.CreationDateException;
+import esgi.todolist.models.exceptions.FieldIsNotUniqueException;
 import esgi.todolist.models.exceptions.TooManyItemsException;
 
 import java.time.LocalDateTime;
@@ -14,19 +15,22 @@ public class List {
         items = new ArrayList<Item>();
     }
 
-    public void addItem(String name, String content) throws TooManyItemsException, CreationDateException {
+    public void addItem(String name, String content) throws TooManyItemsException, CreationDateException, FieldIsNotUniqueException {
         if(items.size() < 11) {
 
             long minutes;
 
             if(!items.isEmpty())
-                minutes = items.get(items.size()).getDateCreation().until( LocalDateTime.now(), ChronoUnit.MINUTES );
+                minutes = items.get(items.size() - 1).getDateCreation().until( LocalDateTime.now(), ChronoUnit.MINUTES );
             else
                 minutes = 45;
 
             if(minutes > 30) {
-                Item item = new Item(name, content);
-                items.add(item);
+                if(!items.contains(name)){
+                    Item item = new Item(name, content);
+                    items.add(item);
+                }else
+                    throw new FieldIsNotUniqueException();
             }else
                 throw new CreationDateException();
         }else
