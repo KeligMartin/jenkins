@@ -26,7 +26,7 @@ public class UserTest {
 
     @Before
     public void beforeTest() {
-        this.user = new User("test@test.fr", "Martin", "Kelig", LocalDate.now().minusYears(20));
+        this.user = new User("test@test.fr", "Martin", "Kelig", "zougatazblex", LocalDate.now().minusYears(20));
 
         this.helperComponent = Mockito.mock(HelperComponent.class);
         when(this.helperComponent.checkEmail(Mockito.anyString())).thenReturn(true);
@@ -43,6 +43,18 @@ public class UserTest {
     public void testIsNotValidEmailFormat(){
         this.user.setEmail("emailnonvalide");
         when(this.helperComponent.checkEmail(Mockito.anyString())).thenReturn(false);
+        assertFalse(this.user.isValid());
+    }
+
+    @Test
+    public void testIsNotValidPasswordTooShort(){
+        this.user.setPassword("oui");
+        assertFalse(this.user.isValid());
+    }
+
+    @Test
+    public void testIsNotValidPasswordTooLong(){
+        this.user.setPassword("zougatazblexzougatazblexzougatazblexzougatazblexzougatazblexzougatazblex");
         assertFalse(this.user.isValid());
     }
 

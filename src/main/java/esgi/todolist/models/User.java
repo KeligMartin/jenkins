@@ -12,16 +12,18 @@ public class User {
     public String email;
     private String name;
     private String firstName;
+    private String password;
     private LocalDate birthDate;
 
     @Autowired
     private HelperComponent helperComponent;
 
 
-    public User(String email, String name, String firstName, LocalDate birthDate){
+    public User(String email, String name, String firstName, String password, LocalDate birthDate){
         this.email = email;
         this.name = name;
         this.firstName = firstName;
+        this.password = password;
         this.birthDate = birthDate;
     }
 
@@ -29,6 +31,8 @@ public class User {
         return EmailValidator.getInstance().isValid(this.email)
                 && StringUtils.isNotBlank(this.name)
                 && StringUtils.isNotBlank(this.firstName)
+                && StringUtils.length(this.password) >= 8
+                && StringUtils.length(this.password) <= 40
                 && LocalDate.now().minusYears(13).isAfter(birthDate);
     }
 
@@ -74,6 +78,14 @@ public class User {
 
     public void setHelperComponent(HelperComponent helperComponent) {
         this.helperComponent = helperComponent;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
