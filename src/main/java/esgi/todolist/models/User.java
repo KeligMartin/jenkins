@@ -29,7 +29,7 @@ public class User {
         return EmailValidator.getInstance().isValid(this.email)
                 && StringUtils.isNotBlank(this.name)
                 && StringUtils.isNotBlank(this.firstName)
-                && LocalDate.now().minusYears(10).isAfter(birthDate);
+                && LocalDate.now().minusYears(13).isAfter(birthDate);
     }
 
     public boolean isAdult(){
