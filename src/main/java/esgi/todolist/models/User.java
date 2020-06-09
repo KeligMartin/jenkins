@@ -15,11 +15,15 @@ public class User {
     private String password;
     private LocalDate birthDate;
 
+    private List userList;
+
     @Autowired
     private HelperComponent helperComponent;
 
 
     public User(String email, String name, String firstName, String password, LocalDate birthDate){
+        this.userList = new List();
+
         this.email = email;
         this.name = name;
         this.firstName = firstName;
