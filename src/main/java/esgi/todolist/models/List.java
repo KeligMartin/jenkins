@@ -14,20 +14,37 @@ public class List {
         items = new ArrayList<Item>();
     }
 
-    public void addItem(String name, String content, LocalDateTime dateCreation) throws TooManyItemsException, CreationDateException {
+    public void addItem(String name, String content) throws TooManyItemsException, CreationDateException {
         if(items.size() < 11) {
-            long minutes = items.get(items.size() - 1).getDateCreation().until( dateCreation, ChronoUnit.MINUTES );
-            System.out.println(minutes);
-            if(minutes > 30) {
-                Item item = new Item(name, content, dateCreation);
-                items.add(item);
-            }else{
-                throw new CreationDateException();
-            }
-        }else{
-            throw new TooManyItemsException();
-        }
 
+            long minutes;
+
+            if(!items.isEmpty())
+                minutes = items.get(items.size()).getDateCreation().until( LocalDateTime.now(), ChronoUnit.MINUTES );
+            else
+                minutes = 45;
+
+            if(minutes > 30) {
+                Item item = new Item(name, content);
+                items.add(item);
+            }else
+                throw new CreationDateException();
+        }else
+            throw new TooManyItemsException();
     }
 
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
+
+    @Override
+    public String toString() {
+        return "List{" +
+                "items=" + items +
+                '}';
+    }
 }

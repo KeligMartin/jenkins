@@ -11,10 +11,12 @@ public class Item {
     public String content;
     public LocalDateTime dateCreation;
 
-    public Item(String name, String content, LocalDateTime dateCreation){
+    public Item(String name, String content){
+        LocalDateTime ldt = LocalDateTime.now();
+
         this.name = name;
         this.content = content;
-        this.dateCreation = dateCreation;
+        this.dateCreation = ldt;
 
         this.id++;
     }
