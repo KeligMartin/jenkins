@@ -1,15 +1,14 @@
-package esgi.todolist.components;
+package esgi.todolist.services;
+
+import org.springframework.stereotype.Service;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-public class Mail {
-
-    public static void main(String[] args) {
-        sendMail("kelig77176@gmail.com", "Test_unitaire", "Salut beau gosse.");
-    }
+@Service
+public class MailService {
 
     public static void sendMail(String mail, String object, String content) {
         final String username = "test.unitaire.tp@gmail.com";

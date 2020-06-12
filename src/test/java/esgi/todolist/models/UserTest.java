@@ -70,4 +70,10 @@ public class UserTest {
         assertFalse(this.user.isValid());
     }
 
+    @Test
+    public void testIsNotAdult(){
+        this.user.setBirthDate(LocalDate.now().minusYears(17));
+        assertFalse(this.user.isAdult());
+    }
+
 }

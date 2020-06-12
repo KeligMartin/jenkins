@@ -1,6 +1,9 @@
 package esgi.todolist.models;
 
 import esgi.todolist.components.HelperComponent;
+import esgi.todolist.models.exceptions.CreationDateException;
+import esgi.todolist.models.exceptions.FieldIsNotUniqueException;
+import esgi.todolist.models.exceptions.TooManyItemsException;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +43,12 @@ public class User {
                 && LocalDate.now().minusYears(13).isAfter(birthDate);
     }
 
+    public void addItem(Item item, List list) throws CreationDateException, TooManyItemsException, FieldIsNotUniqueException {
+        list.addItem(item);
+    }
+
     public boolean isAdult(){
-        return LocalDate.now().minusYears(18).isAfter(birthDate);
+        return LocalDate.now().minusYears(18).isAfter(birthDate) || LocalDate.now().minusYears(18).isEqual(birthDate);
     }
 
     public String getEmail() {
