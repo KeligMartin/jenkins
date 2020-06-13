@@ -6,10 +6,10 @@ import esgi.todolist.models.exceptions.TooManyItemsException;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-public class List {
+public class ToDoList {
     ArrayList<Item> items;
 
-    public List() {
+    public ToDoList() {
         items = new ArrayList<Item>();
     }
 

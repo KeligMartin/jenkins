@@ -16,28 +16,28 @@ import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.Silent.class)
 @SpringBootTest
-public class ListTest {
+public class ToDoListTest {
 
     @Mock
-    List list;
+    ToDoList toDoList;
 
     @Before
     public void beforeTest() {
-        this.list = new List();
+        this.toDoList = new ToDoList();
     }
 
     @Test
     public void testIsValidNominal(){
-        assertTrue(this.list.isValid());
+        assertTrue(this.toDoList.isValid());
     }
 
     @Test
     public void testIsNotValid() throws CreationDateException, TooManyItemsException, FieldIsNotUniqueException {
         Item item = new Item("Name1", "Content1");
-        this.list.addItem(item);
+        this.toDoList.addItem(item);
 
-        this.list.getByName("Name1").setName("");
-        assertFalse(this.list.isValid());
+        this.toDoList.getByName("Name1").setName("");
+        assertFalse(this.toDoList.isValid());
     }
 
     @Test
@@ -46,8 +46,8 @@ public class ListTest {
         Item item2 = new Item("Name2", "Content2");
 
         assertThrows(CreationDateException.class, () -> {
-            this.list.addItem(item1);
-            this.list.addItem(item2);
+            this.toDoList.addItem(item1);
+            this.toDoList.addItem(item2);
         });
     }
 
@@ -62,8 +62,8 @@ public class ListTest {
         System.out.println(item2.toString());
 
         assertThrows(FieldIsNotUniqueException.class, () -> {
-            this.list.addItem(item1);
-            this.list.addItem(item2);
+            this.toDoList.addItem(item1);
+            this.toDoList.addItem(item2);
         });
     }
 
@@ -75,7 +75,7 @@ public class ListTest {
 
             for(int i = 0; i < 11; i++){
                 item = new Item(("Name" + i) , "Content1", ldt);
-                this.list.addItem(item);
+                this.toDoList.addItem(item);
                 ldt = ldt.plusMinutes(30);
             }
         });

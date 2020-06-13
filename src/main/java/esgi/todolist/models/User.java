@@ -18,14 +18,14 @@ public class User {
     private String password;
     private LocalDate birthDate;
 
-    private List userList;
+    private ToDoList userToDoList;
 
     @Autowired
     private HelperComponent helperComponent;
 
 
     public User(String email, String name, String firstName, String password, LocalDate birthDate){
-        this.userList = new List();
+        this.userToDoList = new ToDoList();
 
         this.email = email;
         this.name = name;
@@ -43,8 +43,8 @@ public class User {
                 && LocalDate.now().minusYears(13).isAfter(birthDate);
     }
 
-    public void addItem(Item item, List list) throws CreationDateException, TooManyItemsException, FieldIsNotUniqueException {
-        list.addItem(item);
+    public void addItem(Item item, ToDoList toDoList) throws CreationDateException, TooManyItemsException, FieldIsNotUniqueException {
+        toDoList.addItem(item);
     }
 
     public boolean isAdult(){

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>esgi</groupId>
-	<artifactId>to-do-list</artifactId>
+	<artifactId>to-do-toDoList</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>to-do-list</name>
+	<name>to-do-toDoList</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
