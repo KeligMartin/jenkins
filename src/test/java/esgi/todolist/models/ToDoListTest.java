@@ -33,8 +33,8 @@ public class ToDoListTest {
 
     @Test
     public void testIsNotValid() throws CreationDateException, TooManyItemsException, FieldIsNotUniqueException {
-        Item item = new Item("Name1", "Content1");
-        this.toDoList.addItem(item);
+        ItemList itemList = new ItemList("Name1", "Content1");
+        this.toDoList.addItem(itemList);
 
         this.toDoList.getByName("Name1").setName("");
         assertFalse(this.toDoList.isValid());
@@ -42,12 +42,12 @@ public class ToDoListTest {
 
     @Test
     public void testCreationDateException(){
-        Item item1 = new Item("Name1", "Content1");
-        Item item2 = new Item("Name2", "Content2");
+        ItemList itemList1 = new ItemList("Name1", "Content1");
+        ItemList itemList2 = new ItemList("Name2", "Content2");
 
         assertThrows(CreationDateException.class, () -> {
-            this.toDoList.addItem(item1);
-            this.toDoList.addItem(item2);
+            this.toDoList.addItem(itemList1);
+            this.toDoList.addItem(itemList2);
         });
     }
 
@@ -55,15 +55,15 @@ public class ToDoListTest {
     public void testFieldIsNotUniqueException(){
         LocalDateTime ldt = LocalDateTime.now().plusMinutes(30);
 
-        Item item1 = new Item("Name1", "Content1");
-        Item item2 = new Item("Name1", "Content2", ldt);
+        ItemList itemList1 = new ItemList("Name1", "Content1");
+        ItemList itemList2 = new ItemList("Name1", "Content2", ldt);
 
-        System.out.println(item1.toString());
-        System.out.println(item2.toString());
+        System.out.println(itemList1.toString());
+        System.out.println(itemList2.toString());
 
         assertThrows(FieldIsNotUniqueException.class, () -> {
-            this.toDoList.addItem(item1);
-            this.toDoList.addItem(item2);
+            this.toDoList.addItem(itemList1);
+            this.toDoList.addItem(itemList2);
         });
     }
 
@@ -71,11 +71,11 @@ public class ToDoListTest {
     public void testTooManyItemsException() throws CreationDateException, TooManyItemsException, FieldIsNotUniqueException {
         assertThrows(TooManyItemsException.class, () -> {
             LocalDateTime ldt = LocalDateTime.now();
-            Item item;
+            ItemList itemList;
 
             for(int i = 0; i < 11; i++){
-                item = new Item(("Name" + i) , "Content1", ldt);
-                this.toDoList.addItem(item);
+                itemList = new ItemList(("Name" + i) , "Content1", ldt);
+                this.toDoList.addItem(itemList);
                 ldt = ldt.plusMinutes(30);
             }
         });

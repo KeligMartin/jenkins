@@ -7,14 +7,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class Item {
+public class ItemList {
     public static int id = 0;
 
     public String name;
     public String content;
     public LocalDateTime dateCreation;
 
-    public Item(String name, String content){
+    public ItemList(String name, String content){
         LocalDateTime ldt = LocalDateTime.now();
 
         this.name = name;
@@ -24,7 +24,7 @@ public class Item {
         this.id++;
     }
 
-    public Item(String name, String content, LocalDateTime ldt){
+    public ItemList(String name, String content, LocalDateTime ldt){
         this.name = name;
         this.content = content;
         this.dateCreation = ldt;

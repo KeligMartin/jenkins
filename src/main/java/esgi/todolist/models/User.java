@@ -43,8 +43,8 @@ public class User {
                 && LocalDate.now().minusYears(13).isAfter(birthDate);
     }
 
-    public void addItem(Item item, ToDoList toDoList) throws CreationDateException, TooManyItemsException, FieldIsNotUniqueException {
-        toDoList.addItem(item);
+    public void addItem(ItemList itemList, ToDoList toDoList) throws CreationDateException, TooManyItemsException, FieldIsNotUniqueException {
+        toDoList.addItem(itemList);
     }
 
     public boolean isAdult(){

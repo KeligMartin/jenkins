@@ -1,6 +1,6 @@
 package esgi.todolist.services;
 
-import esgi.todolist.models.Item;
+import esgi.todolist.models.ItemList;
 import esgi.todolist.models.ToDoList;
 import esgi.todolist.models.User;
 import esgi.todolist.models.exceptions.CreationDateException;
@@ -11,20 +11,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class ToDoListService {
 
-    public static Item canAddItem(Item item){
-        if(item.isValid()){
-            return item;
+    public static ItemList canAddItem(ItemList itemList){
+        if(itemList.isValid()){
+            return itemList;
         }
         else{
             return null;
         }
     }
 
-    public static boolean addItem(User user, Item item, ToDoList toDoList) throws CreationDateException, TooManyItemsException, FieldIsNotUniqueException {
-        if (user.isValid() && canAddItem(item) != null){
-            user.addItem(item, toDoList);
+    public static boolean addItem(User user, ItemList itemList, ToDoList toDoList) throws CreationDateException, TooManyItemsException, FieldIsNotUniqueException {
+        if (user.isValid() && canAddItem(itemList) != null){
+            user.addItem(itemList, toDoList);
             if(user.isAdult()){
-                MailService.sendMail(user.getEmail(), "Added " + item.getName() + " item", item.getContent());
+                MailService.sendMail(user.getEmail(), "Added " + itemList.getName() + " item", itemList.getContent());
                 return true;
             }
         }
