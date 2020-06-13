@@ -1,19 +1,14 @@
 package esgi.todolist.models;
 
-import esgi.todolist.components.HelperComponent;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDate;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.Silent.class)
 @SpringBootTest

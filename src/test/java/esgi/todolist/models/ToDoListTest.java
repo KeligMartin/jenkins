@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDateTime;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @RunWith(MockitoJUnitRunner.Silent.class)
 @SpringBootTest
@@ -64,6 +65,20 @@ public class ToDoListTest {
         assertThrows(FieldIsNotUniqueException.class, () -> {
             this.toDoList.addItem(itemList1);
             this.toDoList.addItem(itemList2);
+        });
+    }
+
+    @Test
+    public void testNoException() throws CreationDateException, TooManyItemsException, FieldIsNotUniqueException {
+        assertDoesNotThrow(() -> {
+            LocalDateTime ldt = LocalDateTime.now();
+            ItemList itemList;
+
+            for(int i = 0; i < 10; i++){
+                itemList = new ItemList(("Name" + i) , "Content1", ldt);
+                this.toDoList.addItem(itemList);
+                ldt = ldt.plusMinutes(30);
+            }
         });
     }
 
