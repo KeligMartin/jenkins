@@ -10,7 +10,11 @@ import java.util.Properties;
 @Service
 public class MailService {
 
-    public static void sendMail(String mail, String object, String content) {
+    public static void main(String[] args) {
+        sendMail("j", "s", "s");
+    }
+
+    public static void sendMail(String mail, String object, String content){
         final String username = "test.unitaire.tp@gmail.com";
         final String password = "TestUnitaire1234!";
 
