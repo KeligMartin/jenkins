@@ -29,10 +29,6 @@ public class ItemList {
         this.id++;
     }
 
-    public static int getId() {
-        return id;
-    }
-
     public String getName() {
         return name;
     }
