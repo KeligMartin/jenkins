@@ -4,7 +4,7 @@
   "description": "Projet TO DO List",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/KeligMartin/to-do-list",
+    "url": "https://gitlab.com/KeligMartin/to-do-list"
   },
   "devDependencies": {
     "husky": "^4.3.8"
