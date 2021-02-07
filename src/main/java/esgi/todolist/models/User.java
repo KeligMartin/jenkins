@@ -48,10 +48,6 @@ public class User {
         return LocalDate.now().minusYears(18).isAfter(birthDate) || LocalDate.now().minusYears(18).isEqual(birthDate);
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public String getName() {
         return name;
     }
