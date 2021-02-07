@@ -56,11 +56,6 @@ public class User {
         return name;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-
     public void setEmail(String email) {
         this.email = email;
     }
