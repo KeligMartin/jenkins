@@ -3,19 +3,12 @@ pipeline {
     stages {
        stage('build') {
           steps {
-             echo 'Notify GitLab'
-             updateGitlabCommitStatus name: 'build', state: 'pending'
-             echo 'build step goes here'
-             updateGitlabCommitStatus name: 'build', state: 'success'
+             sh 'mvn clean compile'
           }
        }
-       stage(test) {
+       stage('test') {
            steps {
-               echo 'Notify GitLab'
-               updateGitlabCommitStatus name: 'test', state: 'pending'
-               echo 'test step goes here'
-               updateGitlabCommitStatus name: 'test', state: 'success'
-
+               sh 'mvn clean test'
            }
        }
     }
