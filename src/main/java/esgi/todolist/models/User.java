@@ -60,9 +60,6 @@ public class User {
         return firstName;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
 
     public void setEmail(String email) {
         this.email = email;
