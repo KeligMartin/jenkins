@@ -1,0 +1,18 @@
+{
+  "name": "to-do-list",
+  "version": "0.1.0 RELEASE",
+  "description": "Projet TO DO List",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/KeligMartin/to-do-list",
+  },
+  "devDependencies": {
+    "husky": "^4.3.8"
+  },
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "mvn clean test"
+    }
+  }
+}
