@@ -1,0 +1,29 @@
+stages:
+  - test
+  - build
+  - deploy
+
+test-java:
+  image: maven:3.6.3-openjdk-11
+  stage: test
+  script:
+    - cd java
+    - mvn test
+  cache:
+    paths:
+      - .m2/repository
+  only:
+    - master
+
+
+build-java:
+  image: maven:3.6.3-openjdk-11
+  stage: build
+  before_script:
+    - cd $JAVA_FOLDER
+  script: mvn clean compile
+  cache:
+    paths:
+      - .m2/repository
+  only:
+    - master

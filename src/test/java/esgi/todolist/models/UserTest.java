@@ -1,37 +1,25 @@
 package esgi.todolist.models;
 
-import esgi.todolist.components.HelperComponent;
-import org.junit.Test;
-import org.junit.Before;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.Silent.class)
 @SpringBootTest
 public class UserTest {
 
-    private HelperComponent helperComponent;
 
     @Mock
     User user;
 
-    @Before
+    @BeforeEach
     public void beforeTest() {
         this.user = new User("test@test.fr", "Martin", "Kelig", "zougatazblex", LocalDate.now().minusYears(20));
-
-        this.helperComponent = Mockito.mock(HelperComponent.class);
-        when(this.helperComponent.checkEmail(Mockito.anyString())).thenReturn(true);
-
-        this.user.setHelperComponent(this.helperComponent);
     }
 
     @Test
@@ -42,7 +30,6 @@ public class UserTest {
     @Test
     public void testIsNotValidEmailFormat(){
         this.user.setEmail("emailnonvalide");
-        when(this.helperComponent.checkEmail(Mockito.anyString())).thenReturn(false);
         assertFalse(this.user.isValid());
     }
 

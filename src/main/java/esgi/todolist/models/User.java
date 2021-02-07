@@ -1,6 +1,5 @@
 package esgi.todolist.models;
 
-import esgi.todolist.components.HelperComponent;
 import esgi.todolist.models.exceptions.CreationDateException;
 import esgi.todolist.models.exceptions.FieldIsNotUniqueException;
 import esgi.todolist.models.exceptions.TooManyItemsException;
@@ -20,8 +19,6 @@ public class User {
 
     private ToDoList userToDoList;
 
-    @Autowired
-    private HelperComponent helperComponent;
 
 
     public User(String email, String name, String firstName, String password, LocalDate birthDate){
@@ -83,13 +80,6 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    public HelperComponent getHelperComponent() {
-        return helperComponent;
-    }
-
-    public void setHelperComponent(HelperComponent helperComponent) {
-        this.helperComponent = helperComponent;
-    }
 
     public String getPassword() {
         return password;

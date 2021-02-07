@@ -23,10 +23,7 @@ public class ToDoListService {
     public static boolean addItem(User user, ItemList itemList, ToDoList toDoList) throws CreationDateException, TooManyItemsException, FieldIsNotUniqueException {
         if (user.isValid() && canAddItem(itemList) != null){
             user.addItem(itemList, toDoList);
-            if(user.isAdult()){
-                MailService.sendMail(user.getEmail(), "Added " + itemList.getName() + " item", itemList.getContent());
-                return true;
-            }
+            return user.isAdult();
         }
         return false;
     }

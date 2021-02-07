@@ -1,23 +1,20 @@
 package esgi.todolist.models;
 
-import org.junit.Test;
-import org.junit.Before;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(MockitoJUnitRunner.Silent.class)
 @SpringBootTest
 public class ItemListTest {
 
     @Mock
     ItemList itemList;
 
-    @Before
+    @BeforeEach
     public void beforeTest() {
         this.itemList = new ItemList("item", "i am the content");
     }

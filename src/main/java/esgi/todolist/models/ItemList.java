@@ -1,11 +1,8 @@
 package esgi.todolist.models;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.validator.routines.EmailValidator;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class ItemList {
     public static int id = 0;
